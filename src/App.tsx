@@ -1,50 +1,36 @@
 import React, { useState } from 'react';
+import { ApiService } from './services/api';
 import { Header } from './components/Header';
 import { AudioUpload } from './components/AudioUpload';
 import { PipelineVisualization } from './components/PipelineVisualization';
 import { Results } from './components/Results';
+import { ErrorBoundary } from './components/ErrorBoundary';
 import { PipelineStep, ProcessingResult } from './types';
 
 function App() {
   const [currentStep, setCurrentStep] = useState<PipelineStep>('idle');
   const [isProcessing, setIsProcessing] = useState(false);
   const [result, setResult] = useState<ProcessingResult | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [processingId, setProcessingId] = useState<string | null>(null);
 
   const handleAudioUpload = async (file: File) => {
+    setError(null);
     setIsProcessing(true);
     setResult(null);
-    
-    // Simulate the pipeline steps
-    const steps: PipelineStep[] = ['stt', 'translation', 'llm', 'back-translation', 'tts'];
-    
-    for (const step of steps) {
-      setCurrentStep(step);
-      // Simulate processing time for each step
-      await new Promise(resolve => setTimeout(resolve, 2000));
-    }
-    
-    // Simulate final result
-    const mockResult: ProcessingResult = {
-      originalText: "मैं अपनी फसल की उपज कैसे बढ़ा सकता हूं?",
-      translatedQuery: "How can I increase my crop yield?",
-      llmResponse: "To increase crop yield, consider: 1) Use quality seeds 2) Proper soil preparation 3) Balanced fertilization 4) Adequate irrigation 5) Pest management 6) Crop rotation",
-      finalResponse: "फसल की उपज बढ़ाने के लिए: 1) गुणवत्तापूर्ण बीज का उपयोग करें 2) मिट्टी की उचित तैयारी 3) संतुलित उर्वरीकरण 4) पर्याप्त सिंचाई 5) कीट प्रबंधन 6) फसल चक्र",
-      detectedLanguage: "Hindi",
-      processingTime: "12.5s"
-    };
-    
-    setResult(mockResult);
-    setCurrentStep('completed');
-    setIsProcessing(false);
+    setProcessingId(null);
   };
 
   const handleReset = () => {
     setCurrentStep('idle');
     setIsProcessing(false);
     setResult(null);
+    setError(null);
+    setProcessingId(null);
   };
 
   return (
+    <ErrorBoundary>
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50">
       <Header />
       
@@ -61,6 +47,22 @@ function App() {
 
         <div className="grid lg:grid-cols-2 gap-8 mb-8">
           <div className="space-y-6">
+            {error && (
+              <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+                <div className="flex items-center space-x-2">
+                  <div className="w-4 h-4 bg-red-500 rounded-full"></div>
+                  <h3 className="font-medium text-red-800">Processing Error</h3>
+                </div>
+                <p className="text-red-700 text-sm mt-2">{error}</p>
+                <button
+                  onClick={handleReset}
+                  className="mt-3 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 text-sm"
+                >
+                  Try Again
+                </button>
+              </div>
+            )}
+            
             <AudioUpload 
               onUpload={handleAudioUpload} 
               isProcessing={isProcessing}
@@ -116,6 +118,7 @@ function App() {
         </div>
       </main>
     </div>
+    </ErrorBoundary>
   );
 }
 

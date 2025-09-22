@@ -17,11 +17,28 @@ interface ResultsProps {
 
 export const Results: React.FC<ResultsProps> = ({ result }) => {
   const [copiedField, setCopiedField] = useState<string | null>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const copyToClipboard = (text: string, field: string) => {
     navigator.clipboard.writeText(text);
     setCopiedField(field);
     setTimeout(() => setCopiedField(null), 2000);
+  };
+
+  const playAudio = () => {
+    if (result.audioUrl) {
+      setIsPlaying(true);
+      const audio = new Audio(result.audioUrl);
+      audio.onended = () => setIsPlaying(false);
+      audio.onerror = () => {
+        setIsPlaying(false);
+        alert('Error playing audio file');
+      };
+      audio.play().catch(() => {
+        setIsPlaying(false);
+        alert('Could not play audio file');
+      });
+    }
   };
 
   const ResultCard: React.FC<{
@@ -114,11 +131,19 @@ export const Results: React.FC<ResultsProps> = ({ result }) => {
       </div>
 
       <div className="mt-6 flex space-x-3">
-        <button className="flex-1 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center space-x-2">
+        <button 
+          onClick={playAudio}
+          disabled={!result.audioUrl || isPlaying}
+          className="flex-1 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
+        >
           <Volume2 className="w-4 h-4" />
-          <span>Play Audio Response</span>
+          <span>{isPlaying ? 'Playing...' : 'Play Audio Response'}</span>
         </button>
-        <button className="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors flex items-center space-x-2">
+        <button 
+          onClick={() => result.audioUrl && window.open(result.audioUrl, '_blank')}
+          disabled={!result.audioUrl}
+          className="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors flex items-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
+        >
           <Download className="w-4 h-4" />
           <span>Download</span>
         </button>
@@ -126,9 +151,9 @@ export const Results: React.FC<ResultsProps> = ({ result }) => {
 
       <div className="mt-4 p-3 bg-gray-50 rounded-lg">
         <p className="text-xs text-gray-600">
-          <strong>Note:</strong> This is a demonstration with simulated results. 
-          In the actual implementation, this would connect to your Python pipeline 
-          and process real audio files through the ElevenLabs, Sarvam, and Groq APIs.
+          <strong>Note:</strong> This frontend is now connected to your Python pipeline. 
+          The actual processing is handled by your ElevenLabs, Sarvam, and Groq APIs. 
+          Check the browser console and server logs for detailed processing information.
         </p>
       </div>
     </div>
