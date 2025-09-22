@@ -14,6 +14,7 @@ export interface ProcessingResult {
   finalResponse: string;
   detectedLanguage: string;
   processingTime: string;
+  audioUrl?: string;
 }
 
 export interface PipelineStepInfo {
