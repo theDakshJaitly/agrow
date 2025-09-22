@@ -1,11 +1,10 @@
 import express from 'express';
 import multer from 'multer';
 import cors from 'cors';
-import { spawn } from 'child_process';
+import { spawn } from 'node:child_process';
 import path from 'path';
 import fs from 'fs';
 import { fileURLToPath } from 'url';
-import readline from 'readline';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
