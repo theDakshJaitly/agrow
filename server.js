@@ -5,6 +5,7 @@ import { spawn } from 'child_process';
 import path from 'path';
 import fs from 'fs';
 import { fileURLToPath } from 'url';
+import readline from 'readline';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -158,6 +159,45 @@ app.get('/api/logs', (req, res) => {
     res.status(500).json({ error: 'Error reading logs' });
   }
 });
+
+app.get('/api/stream-logs/:processingId', (req, res) => {
+  const { processingId } = req.params;
+  res.setHeader('Content-Type', 'text/event-stream');
+  res.setHeader('Cache-Control', 'no-cache');
+  res.setHeader('Connection', 'keep-alive');
+
+  const logPath = path.join(__dirname, 'ai-helpline-pipeline', 'logs', 'pipeline.log');
+  let filePos = 0;
+
+  // Send new log lines as they are written
+  const interval = setInterval(() => {
+    if (fs.existsSync(logPath)) {
+      const stats = fs.statSync(logPath);
+      if (stats.size > filePos) {
+        const stream = fs.createReadStream(logPath, { start: filePos, end: stats.size });
+        const rl = readline.createInterface({ input: stream });
+        rl.on('line', (line) => {
+          if (line.includes(processingId)) { // Filter by processingId if you tag logs
+            res.write(`data: ${line}\n\n`);
+          }
+        });
+        rl.on('close', () => {
+          filePos = stats.size;
+        });
+      }
+    }
+  }, 1000);
+
+  req.on('close', () => {
+    clearInterval(interval);
+    res.end();
+  });
+});
+
+const evtSource = new EventSource(`/api/stream-logs/${processingId}`);
+evtSource.onmessage = (event) => {
+  // Append event.data to your log display
+};
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
