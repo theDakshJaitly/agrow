@@ -56,9 +56,6 @@ app.get('/api/health', (req, res) => {
 });
 
 // Process audio endpoint
-app.post('/api/process-audio', upload.single('audio'), async (req, res) => {
-}
-)
 // Custom middleware to handle multer errors
 const handleUpload = (req, res, next) => {
   upload.single('audio')(req, res, (err) => {

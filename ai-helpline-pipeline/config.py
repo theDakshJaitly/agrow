@@ -8,7 +8,7 @@ load_dotenv()
 @dataclass(frozen=True)
 class ServiceEndpoints:
 	elevenlabs_base_url: str = os.getenv("ELEVENLABS_BASE_URL", "https://api.elevenlabs.io/v1")
-	sarvam_base_url: str = os.getenv("SARVAM_BASE_URL", "https://api.sarvam.ai/v1")
+	sarvam_base_url: str = os.getenv("SARVAM_BASE_URL", "https://api.sarvam.ai")
 	groq_base_url: str = os.getenv("GROQ_BASE_URL", "https://api.groq.com/openai/v1")
 
 
@@ -30,6 +30,7 @@ class RateLimits:
 @dataclass(frozen=True)
 class ModelConfig:
 	groq_model_name: str = os.getenv("GROQ_MODEL_NAME", "mixtral-8x7b-32768")
+	elevenlabs_tts_voice_id: str = os.getenv("ELEVENLABS_TTS_VOICE_ID", "pNInz6obpgDQGcFmaJgB")
 
 
 @dataclass(frozen=True)

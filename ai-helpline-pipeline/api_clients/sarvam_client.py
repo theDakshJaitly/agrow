@@ -22,8 +22,8 @@ class SarvamClient:
     def __init__(self, config: AppConfig):
         # FIX: The API key for Sarvam is expected in a different header
         self._api_key = config.sarvam_api_key
-        # FIX: Corrected the base URL to remove the /v1 part
-        self._base_url = "https://api.sarvam.ai" 
+        # Use the base URL from config
+        self._base_url = config.endpoints.sarvam_base_url.rstrip("/")
         self._min_quality = config.quality.min_translation_quality
         self._rate_per_min = config.rate_limits.translation_per_minute
         self._last_ts: float = 0.0

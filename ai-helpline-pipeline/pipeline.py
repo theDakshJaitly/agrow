@@ -53,11 +53,10 @@ class HelplinePipeline:
 			query_for_llm = stt.text
 			self.logger.warning("Source language is 'auto'; skipping translation to English.")
 		else:
-			src_code = f"{effective_source}-IN"
 			tr = self.sarvam.translate(
 				stt.text,
-				source_lang=src_code,
-				target_lang="en-IN"
+				source_lang=effective_source,
+				target_lang="en"
 			)
 			translated_query = tr.translated_text
 			query_for_llm = translated_query
@@ -74,11 +73,10 @@ class HelplinePipeline:
 		final_text = llm_response_en
 		if effective_source not in ("en", "auto"):
 			self.logger.info("Step 4: Translating response back to %s...", effective_source)
-			# FIX: Format the language codes for the translation back as well
 			back = self.sarvam.translate(
 				llm_response_en,
-				source_lang="en-IN",
-				target_lang=f"{effective_source}-IN"
+				source_lang="en",
+				target_lang=effective_source
 			)
 			final_text = back.translated_text
 			self.logger.info("Final translated response: %s", final_text)

@@ -13,7 +13,7 @@ class GroqClient:
     def __init__(self, config: AppConfig):
         self._api_key = config.groq_api_key
         # The base URL from your config is correct.
-        self._base_url = config.endpoints.groq_base_url.rstrip("/")
+        self._base_url = config.endpoints.groq_base_url
         # FIX: Switched to a current and reliable model name.
         self._model = getattr(config.models, "groq_model_name", "llama-3.1-8b-instant")
         self._rate_per_min = config.rate_limits.llm_per_minute

@@ -20,7 +20,7 @@ class STTResult:
 class ElevenLabsClient:
     def __init__(self, config: AppConfig):
         self._api_key = config.elevenlabs_api_key
-        self._base_url = config.endpoints.elevenlabs_base_url.rstrip("/")
+        self._base_url = config.endpoints.elevenlabs_base_url
         self._rate_per_min = config.rate_limits.stt_per_minute  # You might want separate rate limits
         self._last_ts: float = 0.0
         # Store model/voice configs for easier access
@@ -47,7 +47,7 @@ class ElevenLabsClient:
         url = f"{self._base_url}/speech-to-text"
 
         with open(audio_path, "rb") as f:
-            files = {"file": (os.path.basename(audio_path), f, "audio/.wav")}
+            files = {"file": (os.path.basename(audio_path), f, "audio/wav")}
             data = {"model_id": self._stt_model}
             headers = self._headers()
             try:
