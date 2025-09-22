@@ -1,0 +1,5 @@
+2025-09-23 00:08:17,307 - INFO - AI-Powered Helpline Pipeline Started
+2025-09-23 00:08:17,307 - INFO - Input file: Sample1.wav
+2025-09-23 00:08:17,308 - INFO - Step 1: Converting speech to text...
+2025-09-23 00:08:17,311 - DEBUG - Starting new HTTPS connection (1): api.elevenlabs.io:443
+2025-09-23 00:08:18,617 - DEBUG - https://api.elevenlabs.io:443 "POST /v1/speech-to-text HTTP/1.1" 422 None

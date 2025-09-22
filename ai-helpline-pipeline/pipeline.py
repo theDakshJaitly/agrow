@@ -5,7 +5,7 @@ from typing import Optional
 from .config import AppConfig, SUPPORTED_LANGUAGES, validate_language_code
 from .api_clients.elevenlabs_client import ElevenLabsClient
 from .api_clients.sarvam_client import SarvamClient
-from .api_clients.grog_client import GroqClient
+from .api_clients.groq_client import GroqClient
 
 
 @dataclass
