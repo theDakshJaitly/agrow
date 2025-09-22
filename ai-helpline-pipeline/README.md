@@ -40,7 +40,7 @@ ELEVENLABS_BASE_URL=https://api.elevenlabs.io/v1
 SARVAM_BASE_URL=https://api.sarvam.ai/v1
 GROQ_BASE_URL=https://api.groq.com/openai/v1
 
-GROQ_MODEL_NAME=mixtral-8x7b-32768
+GROQ_MODEL_NAME=llama-3.1-8b-instant
 MIN_STT_CONFIDENCE=0.7
 MIN_TRANSLATION_QUALITY=0.6
 ```

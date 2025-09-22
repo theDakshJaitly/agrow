@@ -3,3 +3,219 @@
 2025-09-23 00:08:17,308 - INFO - Step 1: Converting speech to text...
 2025-09-23 00:08:17,311 - DEBUG - Starting new HTTPS connection (1): api.elevenlabs.io:443
 2025-09-23 00:08:18,617 - DEBUG - https://api.elevenlabs.io:443 "POST /v1/speech-to-text HTTP/1.1" 422 None
+2025-09-23 00:16:38,983 - INFO - AI-Powered Helpline Pipeline Started
+2025-09-23 00:16:38,983 - INFO - Input file: Sample1.wav
+2025-09-23 00:16:38,983 - INFO - Step 1: Converting speech to text...
+2025-09-23 00:16:38,987 - DEBUG - Starting new HTTPS connection (1): api.elevenlabs.io:443
+2025-09-23 00:16:39,416 - DEBUG - https://api.elevenlabs.io:443 "POST /v1/speech-to-text/convert HTTP/1.1" 404 None
+2025-09-23 00:18:35,084 - INFO - AI-Powered Helpline Pipeline Started
+2025-09-23 00:18:35,085 - INFO - Input file: Sample1.wav
+2025-09-23 00:18:35,085 - INFO - Step 1: Converting speech to text...
+2025-09-23 00:18:35,088 - DEBUG - Starting new HTTPS connection (1): api.elevenlabs.io:443
+2025-09-23 00:18:35,777 - DEBUG - https://api.elevenlabs.io:443 "POST /v1/speech-to-text HTTP/1.1" 400 None
+2025-09-23 00:23:51,676 - INFO - AI-Powered Helpline Pipeline Started
+2025-09-23 00:23:51,676 - INFO - Input file: Sample1.wav
+2025-09-23 00:23:51,677 - INFO - Step 1: Converting speech to text...
+2025-09-23 00:23:51,680 - DEBUG - Starting new HTTPS connection (1): api.elevenlabs.io:443
+2025-09-23 00:23:54,104 - DEBUG - https://api.elevenlabs.io:443 "POST /v1/speech-to-text HTTP/1.1" 400 None
+2025-09-23 00:24:18,312 - INFO - AI-Powered Helpline Pipeline Started
+2025-09-23 00:24:18,312 - INFO - Input file: Sample1.wav
+2025-09-23 00:24:18,312 - INFO - Step 1: Converting speech to text...
+2025-09-23 00:24:18,315 - DEBUG - Starting new HTTPS connection (1): api.elevenlabs.io:443
+2025-09-23 00:24:19,194 - DEBUG - https://api.elevenlabs.io:443 "POST /v1/speech-to-text HTTP/1.1" 400 None
+2025-09-23 00:24:42,842 - INFO - AI-Powered Helpline Pipeline Started
+2025-09-23 00:24:42,842 - INFO - Input file: Sample1.wav
+2025-09-23 00:24:42,842 - INFO - Step 1: Converting speech to text...
+2025-09-23 00:24:42,845 - DEBUG - Starting new HTTPS connection (1): api.elevenlabs.io:443
+2025-09-23 00:24:43,867 - DEBUG - https://api.elevenlabs.io:443 "POST /v1/speech-to-text HTTP/1.1" 400 None
+2025-09-23 00:26:36,812 - INFO - AI-Powered Helpline Pipeline Started
+2025-09-23 00:26:36,812 - INFO - Input file: Sample1.wav
+2025-09-23 00:26:36,812 - INFO - Step 1: Converting speech to text...
+2025-09-23 00:26:36,816 - DEBUG - Starting new HTTPS connection (1): api.elevenlabs.io:443
+2025-09-23 00:26:37,640 - DEBUG - https://api.elevenlabs.io:443 "POST /v1/speech-to-text HTTP/1.1" 400 None
+2025-09-23 00:28:06,759 - INFO - AI-Powered Helpline Pipeline Started
+2025-09-23 00:28:06,759 - INFO - Input file: Sample1.wav
+2025-09-23 00:28:06,759 - INFO - Step 1: Converting speech to text...
+2025-09-23 00:28:06,762 - DEBUG - Starting new HTTPS connection (1): api.elevenlabs.io:443
+2025-09-23 00:28:07,544 - DEBUG - https://api.elevenlabs.io:443 "POST /v1/speech-to-text HTTP/1.1" 400 None
+2025-09-23 00:28:53,296 - INFO - AI-Powered Helpline Pipeline Started
+2025-09-23 00:28:53,296 - INFO - Input file: Sample1.wav
+2025-09-23 00:28:53,296 - INFO - Step 1: Converting speech to text...
+2025-09-23 00:28:53,300 - DEBUG - Starting new HTTPS connection (1): api.elevenlabs.io:443
+2025-09-23 00:28:55,954 - DEBUG - https://api.elevenlabs.io:443 "POST /v1/speech-to-text HTTP/1.1" 200 None
+2025-09-23 00:28:55,956 - INFO - Transcribed text: ਮੈਂ ਆਪਣੀ ਫਸਲ ਦੀ ਪੈਦਾਵਾਰ ਕਿਵੇਂ ਵਧਾ ਸਕਦਾ ਹਾਂ? ਮੈਂ ਸਤੰਬਰ ਦੌਰਾਨ ਅੰਮ੍ਰਿਤਸਰ ਵਿਚ ਕਣਕ ਉਗਾ ਰਿਹਾ ਹਾਂ।
+2025-09-23 00:28:55,956 - INFO - Step 2: Translating query to en...
+2025-09-23 00:28:55,958 - DEBUG - Starting new HTTPS connection (1): api.sarvam.ai:443
+2025-09-23 00:28:58,357 - DEBUG - https://api.sarvam.ai:443 "POST /v1/translate HTTP/1.1" 404 119
+2025-09-23 00:33:48,782 - INFO - AI-Powered Helpline Pipeline Started
+2025-09-23 00:33:48,783 - INFO - Input file: Sample1.wav
+2025-09-23 00:33:48,783 - INFO - Step 1: Converting speech to text...
+2025-09-23 00:33:48,786 - DEBUG - Starting new HTTPS connection (1): api.elevenlabs.io:443
+2025-09-23 00:33:53,022 - DEBUG - https://api.elevenlabs.io:443 "POST /v1/speech-to-text HTTP/1.1" 200 None
+2025-09-23 00:33:53,024 - INFO - Transcribed text: ਮੈਂ ਆਪਣੀ ਫਸਲ ਦੀ ਪੈਦਾਵਾਰ ਕਿਵੇਂ ਵਧਾ ਸਕਦਾ ਹਾਂ? ਮੈਂ ਸਤੰਬਰ ਦੌਰਾਨ ਅੰਮ੍ਰਿਤਸਰ ਵਿੱਚ ਕਣਕ ਉਗਾ ਰਿਹਾ ਹਾਂ।
+2025-09-23 00:33:53,025 - INFO - Step 2: Translating query to en...
+2025-09-23 00:33:53,026 - DEBUG - Starting new HTTPS connection (1): api.sarvam.ai:443
+2025-09-23 00:33:53,154 - DEBUG - https://api.sarvam.ai:443 "POST /v1/translate HTTP/1.1" 404 119
+2025-09-23 00:37:51,182 - INFO - AI-Powered Helpline Pipeline Started
+2025-09-23 00:37:51,182 - INFO - Input file: Sample1.wav
+2025-09-23 00:37:51,182 - INFO - Step 1: Converting speech to text...
+2025-09-23 00:37:51,187 - DEBUG - Starting new HTTPS connection (1): api.elevenlabs.io:443
+2025-09-23 00:37:53,897 - DEBUG - https://api.elevenlabs.io:443 "POST /v1/speech-to-text HTTP/1.1" 200 None
+2025-09-23 00:37:53,899 - INFO - Transcribed text: ਮੈਂ ਆਪਣੀ ਫਸਲ ਦੀ ਪੈਦਾਵਾਰ ਕਿਵੇਂ ਵਧਾ ਸਕਦਾ ਹਾਂ? ਮੈਂ ਸਤੰਬਰ ਦੌਰਾਨ ਅੰਮ੍ਰਿਤਸਰ ਵਿੱਚ ਕਣਕ ਉਗਾ ਰਿਹਾ ਹਾਂ।
+2025-09-23 00:37:53,899 - INFO - Step 2: Translating query to en...
+2025-09-23 00:37:53,901 - DEBUG - Starting new HTTPS connection (1): api.sarvam.ai:443
+2025-09-23 00:37:54,978 - DEBUG - https://api.sarvam.ai:443 "POST /translate HTTP/1.1" 400 373
+2025-09-23 00:44:59,538 - INFO - AI-Powered Helpline Pipeline Started
+2025-09-23 00:44:59,538 - INFO - Input file: Sample1.wav
+2025-09-23 00:44:59,538 - INFO - Step 1: Converting speech to text...
+2025-09-23 00:44:59,542 - DEBUG - Starting new HTTPS connection (1): api.elevenlabs.io:443
+2025-09-23 00:45:03,452 - DEBUG - https://api.elevenlabs.io:443 "POST /v1/speech-to-text HTTP/1.1" 200 None
+2025-09-23 00:45:03,455 - INFO - Transcribed text: ਮੈਂ ਆਪਣੀ ਫਸਲ ਦੀ ਪੈਦਾਵਾਰ ਕਿਵੇਂ ਵਧਾ ਸਕਦਾ ਹਾਂ? ਮੈਂ ਸਤੰਬਰ ਦੌਰਾਨ ਅੰਮ੍ਰਿਤਸਰ ਵਿਚ ਕਣਕ ਉਗਾ ਰਿਹਾ ਹਾਂ।
+2025-09-23 00:45:03,455 - INFO - Step 2: Translating query to en...
+2025-09-23 00:45:39,006 - INFO - AI-Powered Helpline Pipeline Started
+2025-09-23 00:45:39,006 - INFO - Input file: Sample1.wav
+2025-09-23 00:45:39,006 - INFO - Step 1: Converting speech to text...
+2025-09-23 00:45:39,009 - DEBUG - Starting new HTTPS connection (1): api.elevenlabs.io:443
+2025-09-23 00:45:41,988 - DEBUG - https://api.elevenlabs.io:443 "POST /v1/speech-to-text HTTP/1.1" 200 None
+2025-09-23 00:45:41,990 - INFO - Transcribed text: ਮੈਂ ਆਪਣੀ ਫਸਲ ਦੀ ਪੈਦਾਵਾਰ ਕਿਵੇਂ ਵਧਾ ਸਕਦਾ ਹਾਂ? ਮੈਂ ਸਤੰਬਰ ਦੌਰਾਨ ਅੰਮ੍ਰਿਤਸਰ ਵਿਚ ਕਣਕ ਉਗਾ ਰਿਹਾ ਹਾਂ।
+2025-09-23 00:45:41,990 - INFO - Step 2: Translating query to en...
+2025-09-23 00:45:41,992 - DEBUG - Starting new HTTPS connection (1): api.sarvam.ai:443
+2025-09-23 00:45:45,395 - DEBUG - https://api.sarvam.ai:443 "POST /translate HTTP/1.1" 400 381
+2025-09-23 00:47:46,345 - INFO - AI-Powered Helpline Pipeline Started
+2025-09-23 00:47:46,345 - INFO - Input file: Sample1.wav
+2025-09-23 00:47:46,345 - INFO - Step 1: Converting speech to text...
+2025-09-23 00:47:46,350 - DEBUG - Starting new HTTPS connection (1): api.elevenlabs.io:443
+2025-09-23 00:47:49,179 - DEBUG - https://api.elevenlabs.io:443 "POST /v1/speech-to-text HTTP/1.1" 200 None
+2025-09-23 00:47:49,181 - INFO - Transcribed text: ਮੈਂ ਆਪਣੀ ਫਸਲ ਦੀ ਪੈਦਾਵਾਰ ਕਿਵੇਂ ਵਧਾ ਸਕਦਾ ਹਾਂ? ਮੈਂ ਸਤੰਬਰ ਦੌਰਾਨ ਅੰਮ੍ਰਿਤਸਰ ਵਿਚ ਕਣਕ ਉਗਾ ਰਿਹਾ ਹਾਂ।
+2025-09-23 00:47:49,181 - INFO - Step 2: Translating query to en...
+2025-09-23 00:47:49,183 - DEBUG - Starting new HTTPS connection (1): api.sarvam.ai:443
+2025-09-23 00:47:49,355 - DEBUG - https://api.sarvam.ai:443 "POST /translate HTTP/1.1" 400 145
+2025-09-23 00:49:17,239 - INFO - AI-Powered Helpline Pipeline Started
+2025-09-23 00:49:17,239 - INFO - Input file: Sample1.wav
+2025-09-23 00:49:17,239 - INFO - Step 1: Converting speech to text...
+2025-09-23 00:49:17,243 - DEBUG - Starting new HTTPS connection (1): api.elevenlabs.io:443
+2025-09-23 00:49:20,144 - DEBUG - https://api.elevenlabs.io:443 "POST /v1/speech-to-text HTTP/1.1" 200 None
+2025-09-23 00:49:20,146 - INFO - Transcribed text: ਮੈਂ ਆਪਣੀ ਫਸਲ ਦੀ ਪੈਦਾਵਾਰ ਕਿਵੇਂ ਵਧਾ ਸਕਦਾ ਹਾਂ। ਮੈਂ ਸਤੰਬਰ ਦੌਰਾਨ ਅੰਮ੍ਰਿਤਸਰ ਵਿੱਚ ਕਣਕ ਉਗਾ ਰਿਹਾ ਹਾਂ।
+2025-09-23 00:49:20,146 - WARNING - Source language is 'auto'; skipping translation to English.
+2025-09-23 00:49:20,146 - INFO - Step 3: Processing query with LLM...
+2025-09-23 00:49:20,148 - DEBUG - Starting new HTTPS connection (1): api.groq.com:443
+2025-09-23 00:49:20,244 - DEBUG - https://api.groq.com:443 "POST /openai/v1/chat/completions HTTP/1.1" 400 279
+2025-09-23 00:51:49,348 - INFO - AI-Powered Helpline Pipeline Started
+2025-09-23 00:51:49,348 - INFO - Input file: Sample1.wav
+2025-09-23 00:51:49,348 - INFO - Step 1: Converting speech to text...
+2025-09-23 00:51:49,352 - DEBUG - Starting new HTTPS connection (1): api.elevenlabs.io:443
+2025-09-23 00:51:53,055 - DEBUG - https://api.elevenlabs.io:443 "POST /v1/speech-to-text HTTP/1.1" 200 None
+2025-09-23 00:51:53,057 - INFO - Transcribed text: ਮੈਂ ਆਪਣੀ ਫਸਲ ਦੀ ਪੈਦਾਵਾਰ ਕਿਵੇਂ ਵਧਾ ਸਕਦਾ ਹਾਂ? ਮੈਂ ਸਤੰਬਰ ਦੌਰਾਨ ਅੰਮ੍ਰਿਤਸਰ ਵਿਚ ਕਣਕ ਉਗਾ ਰਿਹਾ ਹਾਂ।
+2025-09-23 00:51:53,058 - WARNING - Source language is 'auto'; skipping translation to English.
+2025-09-23 00:51:53,058 - INFO - Step 3: Processing query with LLM...
+2025-09-23 00:51:53,060 - DEBUG - Starting new HTTPS connection (1): api.groq.com:443
+2025-09-23 00:51:53,189 - DEBUG - https://api.groq.com:443 "POST /openai/v1/chat/completions HTTP/1.1" 400 279
+2025-09-23 00:52:49,255 - INFO - AI-Powered Helpline Pipeline Started
+2025-09-23 00:52:49,255 - INFO - Input file: Sample1.wav
+2025-09-23 00:52:49,255 - INFO - Step 1: Converting speech to text...
+2025-09-23 00:52:49,259 - DEBUG - Starting new HTTPS connection (1): api.elevenlabs.io:443
+2025-09-23 00:52:53,370 - DEBUG - https://api.elevenlabs.io:443 "POST /v1/speech-to-text HTTP/1.1" 200 None
+2025-09-23 00:52:53,373 - INFO - Transcribed text: ਮੈਂ ਆਪਣੀ ਫਸਲ ਦੀ ਪੈਦਾਵਾਰ ਕਿਵੇਂ ਵਧਾ ਸਕਦਾ ਹਾਂ? ਮੈਂ ਸਤੰਬਰ ਦੌਰਾਨ ਅੰਮ੍ਰਿਤਸਰ ਵਿਚ ਕਣਕ ਉਗਾ ਰਿਹਾ ਹਾਂ।
+2025-09-23 00:52:53,373 - WARNING - Source language is 'auto'; skipping translation to English.
+2025-09-23 00:52:53,373 - INFO - Step 3: Processing query with LLM...
+2025-09-23 00:52:53,375 - DEBUG - Starting new HTTPS connection (1): api.groq.com:443
+2025-09-23 00:52:53,476 - DEBUG - https://api.groq.com:443 "POST /openai/v1/chat/completions HTTP/1.1" 400 279
+2025-09-23 00:53:46,838 - INFO - AI-Powered Helpline Pipeline Started
+2025-09-23 00:53:46,838 - INFO - Input file: Sample1.wav
+2025-09-23 00:53:46,838 - INFO - Step 1: Converting speech to text...
+2025-09-23 00:53:46,841 - DEBUG - Starting new HTTPS connection (1): api.elevenlabs.io:443
+2025-09-23 00:53:49,484 - DEBUG - https://api.elevenlabs.io:443 "POST /v1/speech-to-text HTTP/1.1" 200 None
+2025-09-23 00:53:49,487 - INFO - Transcribed text: ਮੈਂ ਆਪਣੀ ਫਸਲ ਦੀ ਪੈਦਾਵਾਰ ਕਿਵੇਂ ਵਧਾ ਸਕਦਾ ਹਾਂ? ਮੈਂ ਸਤੰਬਰ ਦੌਰਾਨ ਅੰਮ੍ਰਿਤਸਰ ਵਿਚ ਕਣਕ ਉਗਾ ਰਿਹਾ ਹਾਂ।
+2025-09-23 00:53:49,488 - WARNING - Source language is 'auto'; skipping translation to English.
+2025-09-23 00:53:49,488 - INFO - Step 3: Processing query with LLM...
+2025-09-23 00:53:49,489 - DEBUG - Starting new HTTPS connection (1): api.groq.com:443
+2025-09-23 00:53:50,405 - DEBUG - https://api.groq.com:443 "POST /openai/v1/chat/completions HTTP/1.1" 200 None
+2025-09-23 00:53:50,408 - INFO - LLM response: ਸਤੰਬਰ ਦੌਰਾਨ ਅੰਮ੍ਰਿਤਸਰ ਵਿਚ ਕਣਕ ਉਗਾਉਣ ਲਈ ਕੁਝ ਸਲਾਹ ਇਹ ਹੈ:
+
+1. **ਪੌਸ਼ਟਿਕ ਤੱਤਾਂ ਦੀ ਪੂਰਤੀ**: ਕਣਕ ਲਈ ਨਾਈਟਰੋਜਨ, ਫਾਸਫੋਰਸ, ਪੋਟਾਸ਼ੀਅਮ ਆਦਿ ਦੀ ਪੂਰਤੀ ਕਰੋ। ਖਾਦ ਦੀ ਵਰਤੋਂ ਕਰੋ ਜਿਵੇਂ ਕਿ ਕਾਲੀ ਮਿੱਟੀ, ਕਾਰਬੋਨੇਟ ਆਦਿ।
+2. **ਪਾਣੀ ਦੀ ਪ੍ਰਾਪਤੀ**: ਕਣਕ ਲਈ ਪਾਣੀ ਦੀ ਪ੍ਰਾਪਤੀ ਮਹੱਤਵਪੂਰਨ ਹੈ। ਪਾਣੀ ਦੀ ਵਰਤੋਂ ਕਰੋ ਜਿਵੇਂ ਕਿ ਸਿੰਚਾਈ ਪੁਮਪ ਜਾਂ ਰਾਇਨ ਸਿੰਚਾਈ ਸਿਸਟਮ।
+3. **ਖੇਤੀ ਦੀ ਨਿਗਰਾ
+2025-09-23 00:53:50,408 - INFO - Step 4: Translating response back to auto...
+2025-09-23 00:53:50,409 - DEBUG - Starting new HTTPS connection (1): api.sarvam.ai:443
+2025-09-23 00:53:52,141 - DEBUG - https://api.sarvam.ai:443 "POST /translate HTTP/1.1" 400 373
+2025-09-23 00:58:17,634 - INFO - AI-Powered Helpline Pipeline Started
+2025-09-23 00:58:17,635 - INFO - Input file: Sample1.wav
+2025-09-23 00:58:17,635 - INFO - Step 1: Converting speech to text...
+2025-09-23 00:58:17,639 - DEBUG - Starting new HTTPS connection (1): api.elevenlabs.io:443
+2025-09-23 00:58:20,597 - DEBUG - https://api.elevenlabs.io:443 "POST /v1/speech-to-text HTTP/1.1" 200 None
+2025-09-23 00:58:20,599 - INFO - Transcribed text: ਮੈਂ ਆਪਣੀ ਫਸਲ ਦੀ ਪੈਦਾਵਾਰ ਕਿਵੇਂ ਵਧਾ ਸਕਦਾ ਹਾਂ। ਮੈਂ ਸਤੰਬਰ ਦੌਰਾਨ ਅੰਮ੍ਰਿਤਸਰ ਵਿੱਚ ਕਣਕ ਉਗਾ ਰਿਹਾ ਹਾਂ।
+2025-09-23 00:58:20,599 - WARNING - Source language is 'auto'; skipping translation to English.
+2025-09-23 00:58:20,599 - INFO - Step 3: Processing query with LLM...
+2025-09-23 00:58:20,601 - DEBUG - Starting new HTTPS connection (1): api.groq.com:443
+2025-09-23 00:58:21,430 - DEBUG - https://api.groq.com:443 "POST /openai/v1/chat/completions HTTP/1.1" 200 None
+2025-09-23 00:58:21,432 - INFO - LLM response: ਸਤੰਬਰ ਦੌਰਾਨ ਅੰਮ੍ਰਿਤਸਰ ਵਿੱਚ ਕਣਕ ਉਗਾਉਣ ਲਈ ਕੁਝ ਸਲਾਹਾਂ:
+
+1. **ਪੌਸ਼ਟਿਕ ਤੱਤਾਂ ਦੀ ਪੂਰਤੀ**: ਕਣਕ ਲਈ ਨਾਈਟ੍ਰੋਜਨ, ਫਾਸਫੋਰਸ, ਅਤੇ ਪੋਟਾਸ਼ੀਅਮ ਦੀ ਪੂਰਤੀ ਕਰੋ। ਆਪਣੇ ਖੇਤ ਦੀ ਜ਼ਮੀਨ ਦੀ ਪੁਸ਼ਟੀ ਕਰੋ ਅਤੇ ਜ਼ਰੂਰੀ ਤੱਤਾਂ ਦੇ ਪ੍ਰਤੀਕਰਮਾਂ ਦੀ ਵਰਤੋਂ ਕਰੋ।
+2. **ਪਾਣੀ ਦੀ ਪੂਰਤੀ**: ਕਣਕ ਲਈ ਪਾਣੀ ਦੀ ਲੋੜ ਹੁੰਦੀ ਹੈ। ਆਪਣੇ ਖੇਤ ਦੇ ਪਾਣੀ ਦੀ ਪੂਰਤੀ ਕਰੋ ਅਤੇ ਜ਼ਰੂਰੀ ਪਾਣੀ ਦੀ ਵਰਤੋਂ ਕਰੋ।
+3. **ਫੁੱਲ
+2025-09-23 00:58:21,433 - INFO - Step 5: Converting text to speech...
+2025-09-23 00:58:23,642 - DEBUG - Starting new HTTPS connection (1): api.elevenlabs.io:443
+2025-09-23 00:58:24,064 - DEBUG - https://api.elevenlabs.io:443 "POST /v1/text-to-speech/21m00Tcm4TlvDq8ikWAM HTTP/1.1" 400 None
+2025-09-23 01:01:21,245 - INFO - AI-Powered Helpline Pipeline Started
+2025-09-23 01:01:21,245 - INFO - Input file: Sample1.wav
+2025-09-23 01:01:21,245 - INFO - Step 1: Converting speech to text...
+2025-09-23 01:01:21,248 - DEBUG - Starting new HTTPS connection (1): api.elevenlabs.io:443
+2025-09-23 01:01:24,650 - DEBUG - https://api.elevenlabs.io:443 "POST /v1/speech-to-text HTTP/1.1" 200 None
+2025-09-23 01:01:24,652 - INFO - Transcribed text: ਮੈਂ ਆਪਣੀ ਫਸਲ ਦੀ ਪੈਦਾਵਾਰ ਕਿਵੇਂ ਵਧਾ ਸਕਦਾ ਹਾਂ? ਮੈਂ ਸਤੰਬਰ ਦੌਰਾਨ ਅੰਮ੍ਰਿਤਸਰ ਵਿਚ ਕਣਕ ਉਗਾ ਰਿਹਾ ਹਾਂ।
+2025-09-23 01:01:24,652 - WARNING - Source language is 'auto'; skipping translation to English.
+2025-09-23 01:01:24,653 - INFO - Step 3: Processing query with LLM...
+2025-09-23 01:01:24,654 - DEBUG - Starting new HTTPS connection (1): api.groq.com:443
+2025-09-23 01:01:25,503 - DEBUG - https://api.groq.com:443 "POST /openai/v1/chat/completions HTTP/1.1" 200 None
+2025-09-23 01:01:25,505 - INFO - LLM response: ਸਤੰਬਰ ਦੌਰਾਨ ਅੰਮ੍ਰਿਤਸਰ ਵਿਚ ਕਣਕ ਉਗਾਉਣ ਲਈ ਕਈ ਤਰੀਕੇ ਹਨ ਜਿਨ੍ਹਾਂ ਨਾਲ ਪੈਦਾਵਾਰ ਵਧਾਈ ਜਾ ਸਕਦੀ ਹੈ:
+
+1. **ਸਿਹਤਮੰਦ ਖਾਦ**: ਖਾਦ ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਮੈਦਾਨ ਦੀ ਮਿੱਟੀ ਦੀ ਗੁਣਵੱਤਾ ਵਧਾਈ ਜਾ ਸਕਦੀ ਹੈ, ਜੋ ਕਿ ਪੈਦਾਵਾਰ ਵਿਚ ਵਾਧਾ ਕਰਦੀ ਹੈ।
+
+2. **ਸਮਾਂ-ਸਾਰ ਪੌਸ਼ਟਿਕ ਤੱਤ**: ਪੌਸ਼ਟਿਕ ਤੱਤਾਂ ਦੀ ਸਮਾਂ-ਸਾਰ ਦੇਣ ਨਾਲ ਕਣਕ ਦੀ ਪੈਦਾਵਾਰ ਵਿਚ ਵਾਧਾ ਹੋ ਸਕਦਾ ਹੈ।
+
+3. **ਸਿਹਤਮੰਦ ਪਾਣੀ**: ਕਣਕ ਦੀ ਪੈਦਾਵਾਰ ਵਿ
+2025-09-23 01:01:25,506 - INFO - Step 5: Converting text to speech...
+2025-09-23 01:01:27,250 - DEBUG - Starting new HTTPS connection (1): api.elevenlabs.io:443
+2025-09-23 01:01:27,619 - DEBUG - https://api.elevenlabs.io:443 "POST /v1/text-to-speech/21m00Tcm4TlvDq8ikWAM HTTP/1.1" 400 None
+2025-09-23 01:03:03,609 - INFO - AI-Powered Helpline Pipeline Started
+2025-09-23 01:03:03,610 - INFO - Input file: Sample1.wav
+2025-09-23 01:03:03,610 - INFO - Step 1: Converting speech to text...
+2025-09-23 01:03:03,613 - DEBUG - Starting new HTTPS connection (1): api.elevenlabs.io:443
+2025-09-23 01:03:06,881 - DEBUG - https://api.elevenlabs.io:443 "POST /v1/speech-to-text HTTP/1.1" 200 None
+2025-09-23 01:03:06,884 - INFO - Transcribed text: ਮੈਂ ਆਪਣੀ ਫਸਲ ਦੀ ਪੈਦਾਵਾਰ ਕਿਵੇਂ ਵਧਾ ਸਕਦਾ ਹਾਂ। ਮੈਂ ਸਤੰਬਰ ਦੌਰਾਨ ਅੰਮ੍ਰਿਤਸਰ ਵਿੱਚ ਕਣਕ ਉਗਾ ਰਿਹਾ ਹਾਂ।
+2025-09-23 01:03:06,884 - WARNING - Source language is 'auto'; skipping translation to English.
+2025-09-23 01:03:06,884 - INFO - Step 3: Processing query with LLM...
+2025-09-23 01:03:06,886 - DEBUG - Starting new HTTPS connection (1): api.groq.com:443
+2025-09-23 01:03:07,873 - DEBUG - https://api.groq.com:443 "POST /openai/v1/chat/completions HTTP/1.1" 200 None
+2025-09-23 01:03:07,875 - INFO - LLM response: ਸਤੰਬਰ ਦੌਰਾਨ ਅੰਮ੍ਰਿਤਸਰ ਵਿੱਚ ਕਣਕ ਉਗਾਉਣ ਲਈ ਇਹ ਕੁਝ ਸਲਾਹਾਂ ਦਿੱਤੀਆਂ ਜਾ ਸਕਦੀਆਂ ਹਨ:
+
+1. **ਸਿਹਤਮੰਦ ਖਾਦਾਂ ਦੀ ਵਰਤੋਂ**: ਕਣਕ ਦੀ ਪੈਦਾਵਾਰ ਨੂੰ ਵਧਾਉਣ ਲਈ ਸਿਹਤਮੰਦ ਖਾਦਾਂ ਦੀ ਵਰਤੋਂ ਕਰੋ, ਜਿਵੇਂ ਕਿ ਕਾਰਬਨ ਨਿਟ੍ਰੇਟ, ਯੂਰੀਆ, ਅਤੇ ਕਾਰਬੋਨੀਕ ਖਾਦਾਂ।
+2. **ਪਾਣੀ ਦੀ ਸਫਾਈ**: ਕਣਕ ਦੀ ਪੈਦਾਵਾਰ ਨੂੰ ਵਧਾਉਣ ਲਈ ਪਾਣੀ ਦੀ ਸਫਾਈ ਦੀ ਜ਼ਰੂਰਤ ਹੈ। ਪਾਣੀ ਦੀ ਜਾਚ ਕਰੋ ਅਤੇ ਪਾਣੀ ਦੀ ਗੁਣਵੱਤਾ ਨੂੰ ਸੁ
+2025-09-23 01:03:07,876 - INFO - Step 5: Converting text to speech...
+2025-09-23 01:03:09,617 - DEBUG - Starting new HTTPS connection (1): api.elevenlabs.io:443
+2025-09-23 01:03:14,937 - DEBUG - https://api.elevenlabs.io:443 "POST /v1/text-to-speech/21m00Tcm4TlvDq8ikWAM HTTP/1.1" 200 None
+2025-09-23 01:03:15,032 - INFO - Audio file created: response.wav (472338 bytes)
+2025-09-23 01:03:15,032 - INFO - Processing complete! Response saved to /Users/dakshjaitly/Desktop/Projects/Agrow/agrow/ai-helpline-pipeline/output/response.wav
+2025-09-23 01:13:37,522 - INFO - AI-Powered Helpline Pipeline Started
+2025-09-23 01:13:37,522 - INFO - Input file: Sample2.wav
+2025-09-23 01:13:37,522 - INFO - Step 1: Converting speech to text...
+2025-09-23 01:13:37,528 - DEBUG - Starting new HTTPS connection (1): api.elevenlabs.io:443
+2025-09-23 01:13:39,443 - DEBUG - https://api.elevenlabs.io:443 "POST /v1/speech-to-text HTTP/1.1" 200 None
+2025-09-23 01:13:39,445 - INFO - Transcribed text: मैं अपनी फसल की उपज कैसे बढ़ा सकता हूं? मैं उत्तर प्रदेश में सितंबर में गेहूं उगा रहा हूं।
+2025-09-23 01:13:39,445 - WARNING - Source language is 'auto'; skipping translation to English.
+2025-09-23 01:13:39,445 - INFO - Step 3: Processing query with LLM...
+2025-09-23 01:13:39,447 - DEBUG - Starting new HTTPS connection (1): api.groq.com:443
+2025-09-23 01:13:40,293 - DEBUG - https://api.groq.com:443 "POST /openai/v1/chat/completions HTTP/1.1" 200 None
+2025-09-23 01:13:40,295 - INFO - LLM response: उत्तर प्रदेश में सितंबर में गेहूं उगाने के लिए कुछ सुझाव:
+
+1. **सही बीज का चयन**: उच्च गुणवत्ता वाले बीज का चयन करें जो आपके क्षेत्र की जलवायु और मिट्टी के अनुसार हो।
+2. **सही फसल चक्र**: गेहूं के लिए 20-25 सेंटीमीटर की गहराई में नम मिट्टी की आवश्यकता होती है। इसलिए, पिछली फसल को हटाने के बाद मिट्टी को अच्छी तरह से तैयार करें।
+3. **नमी और पोषक तत्व**: गेहूं के लिए 25-30 सेंटीमीटर की नमी और 10-12 टन प्रति एकड़ पोषक तत्वों की आवश्यकता होती है।
+4. **सही बुवाई तिथि**: उत्तर प्रदेश में सितंबर के पहले सप्ताह में गेहूं की बुवाई करना सबसे अच्छा होता है।
+5. **सही खेती की तकनीक**: गेहूं की बुवाई के बाद, 2-3 बार सिंचाई करें और 2-3 बार फफूंद नियंत्रण के लिए दवा लगाएं।
+
+इन सुझावों का पालन करके, आप अपनी फसल की उपज को बढ़ा सकते हैं।
+2025-09-23 01:13:40,296 - INFO - Step 5: Converting text to speech...
+2025-09-23 01:13:43,526 - DEBUG - Starting new HTTPS connection (1): api.elevenlabs.io:443
+2025-09-23 01:13:53,094 - DEBUG - https://api.elevenlabs.io:443 "POST /v1/text-to-speech/21m00Tcm4TlvDq8ikWAM HTTP/1.1" 200 None
+2025-09-23 01:13:53,668 - INFO - Audio file created: response.wav (945886 bytes)
+2025-09-23 01:13:53,668 - INFO - Processing complete! Response saved to /Users/dakshjaitly/Desktop/Projects/Agrow/agrow/ai-helpline-pipeline/output/response.wav
