@@ -12,9 +12,9 @@ ai-helpline-pipeline/
 ├── requirements.txt         # Python dependencies
 ├── api_clients/
 │   ├── __init__.py          # Package initialization
-│   ├── vakyansh_client.py   # Vakyansh API client (STT/TTS)
+│   ├── elevenlabs_client.py # ElevenLabs API client (STT/TTS)
 │   ├── sarvam_client.py     # Sarvam API client (Translation)
-│   └── grog_client.py       # Groq API client (LLM)
+│   └── groq_client.py       # Groq API client (LLM)
 ├── temp/                    # Temporary files
 ├── logs/                    # Log files
 ├── output/                  # Output audio files
@@ -32,15 +32,15 @@ pip install -r requirements.txt
 2) Configuration (.env)
 
 ```
-VAKYANSH_API_KEY=your_vakyansh_api_key_here
+ELEVENLABS_API_KEY=your_elevenlabs_api_key_here
 SARVAM_API_KEY=your_sarvam_api_key_here
-GROG_API_KEY=your_grog_api_key_here
+GROQ_API_KEY=your_groq_api_key_here
 
-VAKYANSH_BASE_URL=https://api.vakyansh.com/v1
+ELEVENLABS_BASE_URL=https://api.elevenlabs.io/v1
 SARVAM_BASE_URL=https://api.sarvam.ai/v1
-GROG_BASE_URL=https://api.groq.com/openai/v1
+GROQ_BASE_URL=https://api.groq.com/openai/v1
 
-GROG_MODEL_NAME=mixtral-8x7b-32768
+GROQ_MODEL_NAME=mixtral-8x7b-32768
 MIN_STT_CONFIDENCE=0.7
 MIN_TRANSLATION_QUALITY=0.6
 ```
@@ -61,11 +61,11 @@ python main.py input.wav --verbose
 
 ## Pipeline Workflow
 
-1. Speech-to-Text (Vakyansh)
+1. Speech-to-Text (ElevenLabs)
 2. Translation to English (Sarvam) when needed
 3. LLM Processing (Groq)
 4. Translate response back to the original language (Sarvam) when needed
-5. Text-to-Speech (Vakyansh)
+5. Text-to-Speech (ElevenLabs)
 
 ## Supported Languages
 

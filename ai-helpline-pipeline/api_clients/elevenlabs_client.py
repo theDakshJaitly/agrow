@@ -18,10 +18,10 @@ class STTResult:
 	language: str
 
 
-class VakyanshClient:
+class ElevenLabsClient:
 	def __init__(self, config: AppConfig):
-		self._api_key = config.vakyansh_api_key
-		self._base_url = config.endpoints.vakyansh_base_url.rstrip("/")
+		self._api_key = config.elevenlabs_api_key
+		self._base_url = config.endpoints.elevenlabs_base_url.rstrip("/")
 		self._min_conf = config.quality.min_stt_confidence
 		self._rate_per_min = config.rate_limits.stt_per_minute
 		self._last_ts: float = 0.0
@@ -37,12 +37,12 @@ class VakyanshClient:
 
 	def _headers(self) -> dict:
 		return {
-			"Authorization": f"Bearer {self._api_key}",
+			"xi-api-key": self._api_key,
 		}
 
 	def speech_to_text(self, audio_path: str, source_lang: str = "auto") -> STTResult:
 		self._throttle()
-		url = f"{self._base_url}/stt"
+		url = f"{self._base_url}/speech-to-text"
 		with open(audio_path, "rb") as f:
 			files = {"file": (os.path.basename(audio_path), f, "application/octet-stream")}
 			data = {"source_lang": source_lang}
@@ -60,7 +60,7 @@ class VakyanshClient:
 
 	def text_to_speech(self, text: str, target_lang: str, voice: Optional[str] = None) -> bytes:
 		self._throttle()
-		url = f"{self._base_url}/tts"
+		url = f"{self._base_url}/text-to-speech"
 		data = {
 			"text": text,
 			"target_lang": target_lang,

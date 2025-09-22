@@ -11,9 +11,9 @@ DEFAULT_TIMEOUT = 60
 
 class GroqClient:
 	def __init__(self, config: AppConfig):
-		self._api_key = config.grog_api_key
-		self._base_url = config.endpoints.grog_base_url.rstrip("/")
-		self._model = config.models.grog_model_name
+		self._api_key = config.groq_api_key
+		self._base_url = config.endpoints.groq_base_url.rstrip("/")
+		self._model = config.models.groq_model_name
 		self._rate_per_min = config.rate_limits.llm_per_minute
 		self._last_ts: float = 0.0
 
