@@ -10,6 +10,10 @@ export interface ProcessingResponse {
 
 export interface PipelineStatus {
   status: 'processing' | 'completed' | 'error';
+  currentStep?: string;
+  steps?: Record<string, any>;
+  result?: any;
+  error?: string;
   outputFile?: string;
 }
 

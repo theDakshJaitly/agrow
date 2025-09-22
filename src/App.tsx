@@ -13,12 +13,69 @@ function App() {
   const [result, setResult] = useState<ProcessingResult | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [processingId, setProcessingId] = useState<string | null>(null);
+  const [stepData, setStepData] = useState<Record<string, any>>({});
 
   const handleAudioUpload = async (file: File) => {
     setError(null);
     setIsProcessing(true);
     setResult(null);
     setProcessingId(null);
+    setStepData({});
+    setCurrentStep('stt');
+
+    try {
+      const response = await ApiService.processAudio(file);
+      if (response.status === 'processing' && response.processingId) {
+        setProcessingId(response.processingId);
+        startPolling(response.processingId);
+      } else {
+        throw new Error(response.error || 'Failed to start processing');
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to process audio');
+      setIsProcessing(false);
+      setCurrentStep('idle');
+    }
+  };
+
+  const startPolling = (id: string) => {
+    const pollInterval = setInterval(async () => {
+      try {
+        const status = await ApiService.getProcessingStatus(id);
+        
+        if (status.status === 'completed') {
+          setCurrentStep('completed');
+          setIsProcessing(false);
+          if (status.result) {
+            setResult(status.result);
+          }
+          clearInterval(pollInterval);
+        } else if (status.status === 'error') {
+          setError(status.error || 'Processing failed');
+          setIsProcessing(false);
+          setCurrentStep('idle');
+          clearInterval(pollInterval);
+        } else if (status.status === 'processing') {
+          setCurrentStep(status.currentStep || 'stt');
+          if (status.steps) {
+            setStepData(status.steps);
+          }
+        }
+      } catch (err) {
+        console.error('Polling error:', err);
+        // Continue polling unless it's a critical error
+      }
+    }, 1000); // Poll every second
+
+    // Stop polling after 5 minutes to prevent infinite polling
+    setTimeout(() => {
+      clearInterval(pollInterval);
+      if (isProcessing) {
+        setError('Processing timeout - please try again');
+        setIsProcessing(false);
+        setCurrentStep('idle');
+      }
+    }, 300000);
   };
 
   const handleReset = () => {
@@ -27,6 +84,7 @@ function App() {
     setResult(null);
     setError(null);
     setProcessingId(null);
+    setStepData({});
   };
 
   return (
@@ -78,6 +136,7 @@ function App() {
             <PipelineVisualization 
               currentStep={currentStep}
               isProcessing={isProcessing}
+              stepData={stepData}
             />
           </div>
         </div>

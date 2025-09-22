@@ -13,6 +13,8 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const port = 3001;
 
+// Store active processing sessions
+const activeSessions = new Map();
 // Configure multer for file uploads
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -64,15 +66,31 @@ app.post('/api/process-audio', upload.single('audio'), async (req, res) => {
     const { sourceLanguage = 'auto', targetLanguage = 'en' } = req.body;
     const audioPath = req.file.path;
     const outputFileName = `response-${Date.now()}.wav`;
+    const processingId = path.basename(audioPath, path.extname(audioPath));
     
     console.log(`Processing audio file: ${audioPath}`);
     console.log(`Source language: ${sourceLanguage}, Target language: ${targetLanguage}`);
+
+    // Initialize session tracking
+    activeSessions.set(processingId, {
+      status: 'processing',
+      currentStep: 'stt',
+      steps: {
+        stt: { status: 'processing', data: null },
+        translation: { status: 'pending', data: null },
+        llm: { status: 'pending', data: null },
+        'back-translation': { status: 'pending', data: null },
+        tts: { status: 'pending', data: null }
+      },
+      result: null,
+      error: null
+    });
 
     // Send initial response to start the pipeline visualization
     res.json({
       status: 'processing',
       message: 'Audio processing started',
-      processingId: path.basename(audioPath, path.extname(audioPath))
+      processingId: processingId
     });
 
     // Run the Python pipeline in the background
@@ -90,10 +108,80 @@ app.post('/api/process-audio', upload.single('audio'), async (req, res) => {
 
     let stdout = '';
     let stderr = '';
+    let transcribedText = '';
+    let translatedQuery = '';
+    let llmResponse = '';
+    let finalResponse = '';
+    let detectedLanguage = sourceLanguage;
 
     pythonProcess.stdout.on('data', (data) => {
       stdout += data.toString();
+      const output = data.toString();
       console.log('Python stdout:', data.toString());
+      
+      // Parse pipeline progress from logs
+      const session = activeSessions.get(processingId);
+      if (session) {
+        if (output.includes('Step 1: Converting speech to text')) {
+          session.currentStep = 'stt';
+          session.steps.stt.status = 'processing';
+        } else if (output.includes('Transcribed text:')) {
+          const match = output.match(/Transcribed text: (.+)/);
+          if (match) {
+            transcribedText = match[1].trim();
+            session.steps.stt.status = 'completed';
+            session.steps.stt.data = transcribedText;
+            session.currentStep = 'translation';
+            session.steps.translation.status = 'processing';
+          }
+        } else if (output.includes('Step 2: Translating query to')) {
+          session.currentStep = 'translation';
+          session.steps.translation.status = 'processing';
+        } else if (output.includes('Translated query:')) {
+          const match = output.match(/Translated query: (.+)/);
+          if (match) {
+            translatedQuery = match[1].trim();
+            session.steps.translation.status = 'completed';
+            session.steps.translation.data = translatedQuery;
+          }
+        } else if (output.includes('Step 3: Processing query with LLM')) {
+          session.currentStep = 'llm';
+          session.steps.llm.status = 'processing';
+        } else if (output.includes('LLM response:')) {
+          const match = output.match(/LLM response: (.+)/);
+          if (match) {
+            llmResponse = match[1].trim();
+            session.steps.llm.status = 'completed';
+            session.steps.llm.data = llmResponse;
+            session.currentStep = 'back-translation';
+            session.steps['back-translation'].status = 'processing';
+          }
+        } else if (output.includes('Step 4: Translating response back')) {
+          session.currentStep = 'back-translation';
+          session.steps['back-translation'].status = 'processing';
+        } else if (output.includes('Final translated response:')) {
+          const match = output.match(/Final translated response: (.+)/);
+          if (match) {
+            finalResponse = match[1].trim();
+            session.steps['back-translation'].status = 'completed';
+            session.steps['back-translation'].data = finalResponse;
+          }
+        } else if (output.includes('Step 5: Converting text to speech')) {
+          session.currentStep = 'tts';
+          session.steps.tts.status = 'processing';
+        } else if (output.includes('skipping translation to English')) {
+          session.steps.translation.status = 'skipped';
+          session.currentStep = 'llm';
+          session.steps.llm.status = 'processing';
+          translatedQuery = transcribedText; // Use original text as translated query
+        } else if (output.includes('Audio file created:')) {
+          session.steps.tts.status = 'completed';
+          session.currentStep = 'completed';
+          session.status = 'completed';
+        }
+        
+        activeSessions.set(processingId, session);
+      }
     });
 
     pythonProcess.stderr.on('data', (data) => {
@@ -102,6 +190,8 @@ app.post('/api/process-audio', upload.single('audio'), async (req, res) => {
     });
 
     pythonProcess.on('close', (code) => {
+      const session = activeSessions.get(processingId);
+      
       // Clean up uploaded file
       fs.unlink(audioPath, (err) => {
         if (err) console.error('Error deleting uploaded file:', err);
@@ -109,9 +199,28 @@ app.post('/api/process-audio', upload.single('audio'), async (req, res) => {
 
       if (code === 0) {
         console.log('Pipeline completed successfully');
+        if (session) {
+          session.status = 'completed';
+          session.currentStep = 'completed';
+          session.result = {
+            originalText: transcribedText,
+            translatedQuery: translatedQuery || transcribedText,
+            llmResponse: llmResponse,
+            finalResponse: finalResponse || llmResponse,
+            detectedLanguage: detectedLanguage,
+            processingTime: 'Processing completed',
+            audioUrl: `/output/${outputFileName}`
+          };
+          activeSessions.set(processingId, session);
+        }
       } else {
         console.error(`Pipeline failed with code ${code}`);
         console.error('stderr:', stderr);
+        if (session) {
+          session.status = 'error';
+          session.error = stderr || 'Pipeline processing failed';
+          activeSessions.set(processingId, session);
+        }
       }
     });
 
@@ -128,18 +237,14 @@ app.post('/api/process-audio', upload.single('audio'), async (req, res) => {
 app.get('/api/status/:processingId', (req, res) => {
   const { processingId } = req.params;
   
-  // Check if output file exists
-  const outputPath = path.join(__dirname, 'ai-helpline-pipeline', 'output');
-  const files = fs.readdirSync(outputPath).filter(f => f.includes(processingId));
+  const session = activeSessions.get(processingId);
   
-  if (files.length > 0) {
-    res.json({
-      status: 'completed',
-      outputFile: `/output/${files[0]}`
-    });
+  if (session) {
+    res.json(session);
   } else {
     res.json({
-      status: 'processing'
+      status: 'not_found',
+      error: 'Processing session not found'
     });
   }
 });
@@ -160,44 +265,18 @@ app.get('/api/logs', (req, res) => {
   }
 });
 
-app.get('/api/stream-logs/:processingId', (req, res) => {
-  const { processingId } = req.params;
-  res.setHeader('Content-Type', 'text/event-stream');
-  res.setHeader('Cache-Control', 'no-cache');
-  res.setHeader('Connection', 'keep-alive');
-
-  const logPath = path.join(__dirname, 'ai-helpline-pipeline', 'logs', 'pipeline.log');
-  let filePos = 0;
-
-  // Send new log lines as they are written
-  const interval = setInterval(() => {
-    if (fs.existsSync(logPath)) {
-      const stats = fs.statSync(logPath);
-      if (stats.size > filePos) {
-        const stream = fs.createReadStream(logPath, { start: filePos, end: stats.size });
-        const rl = readline.createInterface({ input: stream });
-        rl.on('line', (line) => {
-          if (line.includes(processingId)) { // Filter by processingId if you tag logs
-            res.write(`data: ${line}\n\n`);
-          }
-        });
-        rl.on('close', () => {
-          filePos = stats.size;
-        });
+// Clean up completed sessions periodically
+setInterval(() => {
+  const now = Date.now();
+  for (const [id, session] of activeSessions.entries()) {
+    // Remove sessions older than 1 hour
+    if (session.status === 'completed' || session.status === 'error') {
+      if (now - session.timestamp > 3600000) { // 1 hour
+        activeSessions.delete(id);
       }
     }
-  }, 1000);
-
-  req.on('close', () => {
-    clearInterval(interval);
-    res.end();
-  });
-});
-
-const evtSource = new EventSource(`/api/stream-logs/${processingId}`);
-evtSource.onmessage = (event) => {
-  // Append event.data to your log display
-};
+  }
+}, 300000); // Clean up every 5 minutes
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);

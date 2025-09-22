@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Upload, Mic, RotateCcw, Play } from 'lucide-react';
+import { Upload, Mic, RotateCcw, Play, Bot } from 'lucide-react';
 
 interface AudioUploadProps {
   onUpload: (file: File) => void;

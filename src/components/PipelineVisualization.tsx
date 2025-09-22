@@ -13,6 +13,7 @@ import { PipelineStep, PipelineStepInfo } from '../types';
 interface PipelineVisualizationProps {
   currentStep: PipelineStep;
   isProcessing: boolean;
+  stepData?: Record<string, any>;
 }
 
 const stepInfo: PipelineStepInfo[] = [
@@ -65,11 +66,17 @@ const getIcon = (iconName: string, isActive: boolean, isCompleted: boolean) => {
 
 export const PipelineVisualization: React.FC<PipelineVisualizationProps> = ({ 
   currentStep, 
-  isProcessing 
+  isProcessing,
+  stepData = {}
 }) => {
   const getStepStatus = (stepId: PipelineStep) => {
     if (currentStep === 'idle') return 'pending';
     if (currentStep === 'completed') return 'completed';
+    
+    // Check step data for more accurate status
+    if (stepData[stepId]) {
+      return stepData[stepId].status;
+    }
     
     const stepIndex = stepInfo.findIndex(step => step.id === stepId);
     const currentIndex = stepInfo.findIndex(step => step.id === currentStep);
@@ -79,6 +86,15 @@ export const PipelineVisualization: React.FC<PipelineVisualizationProps> = ({
     return 'pending';
   };
 
+  const getStepPreview = (stepId: PipelineStep) => {
+    if (stepData[stepId] && stepData[stepId].data) {
+      const data = stepData[stepId].data;
+      if (typeof data === 'string') {
+        return data.length > 100 ? data.substring(0, 100) + '...' : data;
+      }
+    }
+    return null;
+  };
   return (
     <div className="bg-white rounded-xl shadow-lg p-6">
       <h2 className="text-xl font-semibold text-gray-800 mb-6 flex items-center">
@@ -91,22 +107,27 @@ export const PipelineVisualization: React.FC<PipelineVisualizationProps> = ({
           const status = getStepStatus(step.id);
           const isActive = status === 'active';
           const isCompleted = status === 'completed';
-          const isPending = status === 'pending';
+          const isSkipped = status === 'skipped';
+          const preview = getStepPreview(step.id);
           
           return (
             <div key={step.id} className="relative">
               <div className={`flex items-start space-x-4 p-4 rounded-lg transition-all duration-300 ${
                 isActive ? 'bg-blue-50 border-l-4 border-blue-500' :
                 isCompleted ? 'bg-green-50 border-l-4 border-green-500' :
+                isSkipped ? 'bg-yellow-50 border-l-4 border-yellow-500' :
                 'bg-gray-50 border-l-4 border-gray-200'
               }`}>
                 <div className={`flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center ${
                   isCompleted ? 'bg-green-100' :
                   isActive ? 'bg-blue-100' :
+                  isSkipped ? 'bg-yellow-100' :
                   'bg-gray-100'
                 }`}>
                   {isCompleted ? (
                     <CheckCircle className="w-6 h-6 text-green-600" />
+                  ) : isSkipped ? (
+                    <span className="text-yellow-600 text-xs font-bold">SKIP</span>
                   ) : isActive && isProcessing ? (
                     <Loader2 className="w-6 h-6 text-blue-600 animate-spin" />
                   ) : (
@@ -118,6 +139,7 @@ export const PipelineVisualization: React.FC<PipelineVisualizationProps> = ({
                   <h3 className={`font-medium ${
                     isCompleted ? 'text-green-800' :
                     isActive ? 'text-blue-800' :
+                    isSkipped ? 'text-yellow-800' :
                     'text-gray-600'
                   }`}>
                     {step.title}
@@ -131,20 +153,31 @@ export const PipelineVisualization: React.FC<PipelineVisualizationProps> = ({
                         Completed
                       </span>
                     )}
+                    {isSkipped && (
+                      <span className="ml-2 text-sm font-normal text-yellow-600">
+                        Skipped
+                      </span>
+                    )}
                   </h3>
                   <p className={`text-sm mt-1 ${
                     isCompleted ? 'text-green-600' :
                     isActive ? 'text-blue-600' :
+                    isSkipped ? 'text-yellow-600' :
                     'text-gray-500'
                   }`}>
                     {step.description}
                   </p>
+                  {preview && (
+                    <div className="mt-2 p-2 bg-white rounded border text-xs text-gray-700">
+                      <strong>Preview:</strong> {preview}
+                    </div>
+                  )}
                 </div>
               </div>
               
               {index < stepInfo.length - 1 && (
                 <div className={`w-0.5 h-4 ml-10 ${
-                  isCompleted ? 'bg-green-300' : 'bg-gray-200'
+                  isCompleted || isSkipped ? 'bg-green-300' : 'bg-gray-200'
                 }`} />
               )}
             </div>
